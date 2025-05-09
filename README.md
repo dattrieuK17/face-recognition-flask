@@ -11,6 +11,7 @@
 
 - Python 3.x
 - Flask
+- Insightface
 - OpenCV
 - SQLite (qua `face_embeddings.db`)
 
@@ -43,13 +44,28 @@ face-recognition-flask/
    pip install -r requirements.txt
    ```
 
-3. **Chạy ứng dụng:**
+3. **(Tùy chọn) Tổ chức dữ liệu khuôn mặt để thử nghiệm:**
+
+   Tạo thư mục `face_image/` chứa các thư mục con theo tên, mỗi thư mục chứa các ảnh khuôn mặt:
+
+   ```
+   face_image/
+   ├── {your_name_1}/
+   │   ├── abc.jpg
+   │   └── xyz.jpg
+   ├── {your_name_2}/
+   │   ├── jkl.jpg
+   │   └── qweqwe.jpg
+   ```
+
+
+4. **Chạy ứng dụng:**
 
    ```bash
    python app.py
    ```
 
-4. **Truy cập ứng dụng:**
+55. **Truy cập ứng dụng:**
 
    Mở trình duyệt và truy cập `http://localhost:5000`.
 
@@ -65,6 +81,3 @@ face-recognition-flask/
 - Cơ sở dữ liệu `face_embeddings.db` chứa embedding của các khuôn mặt đã biết.
 - Thư mục `uploads/` lưu trữ ảnh người dùng tải lên.
 
-## 📄 Giấy phép
-
-Dự án được phát hành dưới giấy phép MIT.
