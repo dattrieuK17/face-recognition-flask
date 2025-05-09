@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Recognition Demo</title>
+</head>
+<body>
+    <h1>Upload ảnh để nhận diện khuôn mặt</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <input type="submit" value="Nhận diện">
+    </form>
+    {% if result %}
+        <h3>Kết quả: {{ result }}</h3>
+    {% endif %}
+</body>
+</html>
