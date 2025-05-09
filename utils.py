@@ -11,19 +11,6 @@ import torch
 app = FaceAnalysis(name="buffalo_l", providers=['CUDAExecutionProvider' if torch.cuda.is_available() else 'CPUExecutionProvider'])
 app.prepare(ctx_id=0 if torch.cuda.is_available() else -1)
 
-# Kết nối tới database
-# conn = sqlite3.connect('face_embeddings.db')
-# cursor = conn.cursor()
-
-# cursor.execute('''
-#     CREATE TABLE IF NOT EXISTS embeddings (
-#         id INTEGER PRIMARY KEY AUTOINCREMENT,
-#         person_name TEXT NOT NULL,
-#         embedding TEXT NOT NULL
-#     )
-# ''')
-# conn.commit()
-
 def insert_embedding(person_name, embedding_vector):
     conn = sqlite3.connect('face_embeddings.db')
     cursor = conn.cursor()
@@ -86,4 +73,9 @@ def create_database(image_root):
 
     conn.close()
 
+# Hàm tính cosine similarity
+def cosine_similarity(vec1, vec2):
+    return np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
 
+if not os.path.exists('face_embeddings.db'):
+    create_database('face_image')
